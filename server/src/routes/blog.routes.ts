@@ -14,11 +14,13 @@ const blogRouter = new Hono<{
     DATABASE_URL: string
     JWT_SECRET: string
   }
-}>()
+}>();
+
 blogRouter.post('/create', authMiddleware, createBlog)
+blogRouter.get('/usrBlogs', authMiddleware, getUserBlogs)
+blogRouter.get('/bulk', getAllUserBlogs)
 blogRouter.put('/update/:id', authMiddleware, updateBlog)
 blogRouter.get('/:id', authMiddleware, particularBlog)
 blogRouter.delete('/delete/:id', authMiddleware, deleteBlog)
-blogRouter.get('/usrBlogs', authMiddleware, getUserBlogs)
-blogRouter.get('/bulk', getAllUserBlogs)
+
 export { blogRouter }

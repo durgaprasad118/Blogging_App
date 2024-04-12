@@ -5,10 +5,11 @@ const getAllUserBlogs = async (c) => {
     datasourceUrl: c.env.DATABASE_URL,
   }).$extends(withAccelerate());
   try {
+    console.log("control reached here!")
     const blogs = await prisma.post.findMany();
     return c.json({
       success: true,
-      message: "blog updated sucessfully",
+      message: "blogs fetched sucessfully",
       data: {
         blogs: blogs,
       },
@@ -17,7 +18,7 @@ const getAllUserBlogs = async (c) => {
     console.log(error);
     return c.json({
       success: false,
-      message: "Failed to update blog",
+      message: "Failed to get  blogs",
     });
   }
 };

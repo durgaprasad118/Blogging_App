@@ -17,11 +17,11 @@ const authMiddleware = async (c, next) => {
     }
   } catch (error) {
     console.log(error);
+    c.status(403);
     return c.json({
       success: false,
       message: "token invalid",
     });
   }
 };
-
 export { authMiddleware };
