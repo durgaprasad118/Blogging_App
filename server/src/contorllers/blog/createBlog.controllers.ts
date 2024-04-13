@@ -1,5 +1,6 @@
 import { PrismaClient } from "@prisma/client/edge";
 import { withAccelerate } from "@prisma/extension-accelerate";
+import { BlogCreate } from "../../utils/Types";
 const createBlog = async (c) => {
   const prisma = new PrismaClient({
     datasourceUrl: c.env.DATABASE_URL,
@@ -7,6 +8,14 @@ const createBlog = async (c) => {
   try {
     const userId:string = c.get("userId");
     const body = await c.req.json();
+    const {success} = BlogCreate.safeParse(body);
+    if(!success){
+      c.status(411)
+      return c.json({
+        success: false,
+        message: 'please enter your details correctly',
+      })
+    }
     const blog = await prisma.post.create({
       data: {
         title: body.title,

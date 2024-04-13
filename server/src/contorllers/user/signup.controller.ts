@@ -2,12 +2,21 @@ import { PrismaClient } from "@prisma/client/edge";
 import { withAccelerate } from "@prisma/extension-accelerate";
 import { sign } from "hono/jwt";
 import { HashPasswrd } from "../../utils/HashPassword";
+import { UserSignup } from "../../utils/Types";
 const SignUp = async (c) => {
   const prisma = new PrismaClient({
     datasourceUrl: c.env.DATABASE_URL,
   }).$extends(withAccelerate());
   try {
     const body = await c.req.json();
+    const {success} = UserSignup.safeParse(body);
+    if(!success){
+      c.status(411)
+      return c.json({
+        success: false,
+        message: 'please enter your details correctly',
+      })
+    }
     const existingUser = await prisma.user.findUnique({
       where:{
         email:body.email
