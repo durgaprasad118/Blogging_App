@@ -14,15 +14,12 @@ const deleteBlog = async (c) => {
     return c.json({
       success: true,
       message: "blog deleted sucessfully",
-      // data: {
-      //   id: blog.id,
-      // },
     });
   } catch (error) {
     console.log(error);
     return c.json({
       success: false,
-      message: "Failed to delete blog",
+      message: "Failed to delete blog id not found!",
     });
   }
 };

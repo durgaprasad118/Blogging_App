@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client/edge";
 import { withAccelerate } from "@prisma/extension-accelerate";
 import { sign } from "hono/jwt";
+import { CheckPassword } from "../../utils/HashPassword";
 const Signin = async (c) => {
   const prisma = new PrismaClient({
     datasourceUrl: c.env.DATABASE_URL,
@@ -19,7 +20,8 @@ const Signin = async (c) => {
         message: "please sign Up",
       });
     }
-    if (user.password !== body.password) {
+    const validPassword = await CheckPassword(user.password,body.password);
+    if (!validPassword) {
       c.status(403);
       return c.json({
         success: false,
