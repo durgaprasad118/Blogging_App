@@ -12,7 +12,8 @@ const UserSignin = z.object({
 const BlogCreate = z.object({
     title: z.string(),
     content:z.string(),
-    published: z.boolean()
+    published: z.boolean(),
+    image :z.string().optional()
 })
 
 export {

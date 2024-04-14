@@ -21,6 +21,7 @@ const createBlog = async (c) => {
         title: body.title,
         content: body.content,
         published: body.published,
+        image: body.image,
         authorId: userId
       },
     });
