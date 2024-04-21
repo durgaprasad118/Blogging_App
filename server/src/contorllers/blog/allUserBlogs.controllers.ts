@@ -5,8 +5,28 @@ const getAllUserBlogs = async (c) => {
     datasourceUrl: c.env.DATABASE_URL,
   }).$extends(withAccelerate());
   try {
-    console.log("control reached here!")
-    const blogs = await prisma.post.findMany();
+    const filter = c.req.query("filter") || "";
+    const blogs = await prisma.post.findMany({
+      where: {
+        OR: [
+          {
+            title: {
+              contains: filter,
+              mode: "insensitive",
+            },
+          },
+          {
+            content: {
+              contains: filter,
+              mode: "insensitive",
+            },
+          },
+        ],
+      },
+      include: {
+        author: true,
+      },
+    });
     return c.json({
       success: true,
       message: "blogs fetched sucessfully",
@@ -22,5 +42,4 @@ const getAllUserBlogs = async (c) => {
     });
   }
 };
-
 export { getAllUserBlogs };

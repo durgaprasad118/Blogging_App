@@ -6,15 +6,15 @@ const createBlog = async (c) => {
     datasourceUrl: c.env.DATABASE_URL,
   }).$extends(withAccelerate());
   try {
-    const userId:string = c.get("userId");
+    const userId: string = c.get("userId");
     const body = await c.req.json();
-    const {success} = BlogCreate.safeParse(body);
-    if(!success){
-      c.status(411)
+    const { success } = BlogCreate.safeParse(body);
+    if (!success) {
+      c.status(411);
       return c.json({
         success: false,
-        message: 'please enter your details correctly',
-      })
+        message: "please enter your details correctly",
+      });
     }
     const blog = await prisma.post.create({
       data: {
@@ -22,7 +22,7 @@ const createBlog = async (c) => {
         content: body.content,
         published: body.published,
         image: body.image,
-        authorId: userId
+        authorId: userId,
       },
     });
     return c.json({
