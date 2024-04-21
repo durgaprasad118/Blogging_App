@@ -1,15 +1,11 @@
+import Editorr from "./Editor";
+import parse from "html-react-parser";
 const Home = () => {
 	const content =
-		'<p><strong style="font-family: &quot;Lucida Sans Unicode&quot;, &quot;Lucida Grande&quot;, sans-serif; font-size: 30px;">Hello there</strong></p><ul style="list-style-type: circle;"><li><br></li></ul><p>hello</p><ol style="list-style-type: upper-roman;"><li>a</li><li>b</li><li>c</li><li><br></li><br></ol>';
-	const content2 =
-		'<p><strong style="font-size: 48px;">Hello there I am a title of the blog&nbsp;</strong></p><ol style="list-style-type: upper-roman;"><li><strong style="font-size: 48px;">one</strong></li><li><strong style="font-size: 48px;">two</strong></li><li><strong style="font-size: 48px;">theree</strong></li><li><strong style="font-size: 48px;"><a href="https://www.google.com/">https://www.google.com/</a></strong></li><br></ol>';
+		'<p><strong>Fetch data from The file</strong></p><ol style="list-style-type: lower-roman;"><li>one</li><li>two&nbsp;</li><li>threee</li><li>four</li><li>five</li></ol>';
 	return (
-		<div className="py-2 w-full bg-white dark:bg-gray-900 flex items-center justify-center flex-col gap-4 px-2 md:px-0">
-			{/* <BlogPage /> */}
-			<div
-				className="text-white"
-				dangerouslySetInnerHTML={{ __html: content2 }}
-			/>
+		<div className="py-2 w-full bg-white dark:bg-gray-900 text-gray-800 dark:text-white flex items-center justify-center flex-col gap-4 px-2 md:px-0">
+			{parse(content)}
 		</div>
 	);
 };

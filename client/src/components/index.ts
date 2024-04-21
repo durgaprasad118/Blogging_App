@@ -1,4 +1,4 @@
-export { Editor } from "./Editor";
+export { Editorr } from "./Editor";
 export { BlogCard } from "./BlogCard";
 export { Footerr } from "./Footer";
 export { Header } from "./Navbar";

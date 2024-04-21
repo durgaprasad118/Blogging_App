@@ -1,52 +1,46 @@
-import JoditEditor from "jodit-react";
+import { Editor } from "@tinymce/tinymce-react";
+import { useState } from "react";
+
 export interface EditorI {
 	content: string;
 	setContent: React.Dispatch<React.SetStateAction<string>>;
 }
-const Editor = ({ content, setContent }: EditorI) => {
+function Editorr({ content, setContent }: EditorI) {
+	const onEditorInputChange = (newValue) => {
+		setContent(newValue);
+	};
 	return (
-		<div>
-			<JoditEditor
-				value={content}
-				config={{
-					buttons: [
-						"source",
-						"|",
-						"bold",
-						"italic",
-						"underline",
-						"|",
-						"ul",
-						"ol",
-						"|",
-						"font",
-						"fontsize",
-						"brush",
-						"paragraph",
-						"|",
-						"image",
-						"table",
-						"link",
-						"|",
-						"left",
-						"center",
-						"right",
-						"justify",
-						"|",
-						"undo",
-						"redo",
-						"|",
-						"hr",
-						"eraser",
-						"fullsize",
+		<div className="py-3">
+			<Editor
+				apiKey="mu2fiadzwozcmwmerrtl4ew3rre5qk2kw1mya51xoldre8ju"
+				init={{
+					menubar: false,
+					direction: "ltr",
+					icons: "jam",
+					plugins:
+						"anchor autolink charmap codesample emoticons  link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter  linkchecker         tableofcontents footnotes mergetags autocorrect typography inlinecss markdown",
+					toolbar:
+						"undo redo | blocks fontfamily  | bold italic underline strikethrough | link   table  | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat",
+					tinycomments_mode: "embedded",
+					tinycomments_author: "Author name",
+					mergetags_list: [
+						{ value: "First.Name", title: "First Name" },
+						{ value: "Email", title: "Email" },
 					],
-					height: "450px",
-					width: "100%",
+					ai_request: (request, respondWith) =>
+						respondWith.string(() =>
+							Promise.reject(
+								"See docs to implement AI Assistant",
+							),
+						),
 				}}
-				onBlur={(newContent) => setContent(newContent)}
-				onChange={(newContent) => {}}
+				onEditorChange={(newValue, editor) =>
+					onEditorInputChange(newValue, editor)
+				}
+				value={content}
+				initialValue={"Start blog here.."}
 			/>
 		</div>
 	);
-};
-export { Editor };
+}
+export { Editorr };

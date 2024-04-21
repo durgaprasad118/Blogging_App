@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
-import { Editor } from "../components";
-import { useUpload } from "../hooks";
-import { Button } from "flowbite-react";
 import axios from "axios";
+import { Button } from "flowbite-react";
+import { useEffect, useState } from "react";
 import { useRecoilValue } from "recoil";
-import { tokenAtom } from "../store/atoms";
 import { toast } from "sonner";
+import { Editorr } from "../components";
+import { useUpload } from "../hooks";
+import { tokenAtom } from "../store/atoms";
 const BlogPage = () => {
 	const BASE_URL = import.meta.env.VITE_URL;
 	const [content, setContent] = useState("");
@@ -109,7 +109,7 @@ const BlogPage = () => {
 					Upload
 				</Button>
 			</div>
-			<Editor content={content} setContent={setContent}></Editor>
+			<Editorr content={content} setContent={setContent} />{" "}
 			<div className="flex items-center justify-center">
 				<Button
 					onClick={SubmitHandler}
