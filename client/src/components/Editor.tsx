@@ -39,7 +39,6 @@ function Editorr({ content, setContent }: EditorI) {
 					onEditorInputChange(newValue, editor)
 				}
 				value={content}
-				initialValue={"Start blog here.."}
 			/>
 		</div>
 	);

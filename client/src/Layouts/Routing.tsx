@@ -1,8 +1,16 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import RootLevel from "./RootLevel";
-import { BlogWrite, Home, Login, Signup } from "../pages";
+import {
+	BlogEdit,
+	BlogPage,
+	BlogWrite,
+	Home,
+	Login,
+	Settings,
+	Signup,
+} from "../pages";
 import { Blogs } from "../pages/Blogs";
-
+import { ProtectedRoute } from "../hooks";
 const Routing = () => {
 	return (
 		<BrowserRouter>
@@ -12,7 +20,38 @@ const Routing = () => {
 					<Route path="/signup" element={<Signup />} />
 					<Route path="/login" element={<Login />} />
 					<Route path="/blogs" element={<Blogs />} />
-					<Route path="/write" element={<BlogWrite />} />
+					<Route
+						path="/write"
+						element={
+							<ProtectedRoute>
+								<BlogWrite />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path="/blog/:id"
+						element={
+							<ProtectedRoute>
+								<BlogPage />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path="/blog/edit/:id"
+						element={
+							<ProtectedRoute>
+								<BlogEdit />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path="/settings"
+						element={
+							<ProtectedRoute>
+								<Settings />
+							</ProtectedRoute>
+						}
+					/>
 				</Route>
 			</Routes>
 		</BrowserRouter>
