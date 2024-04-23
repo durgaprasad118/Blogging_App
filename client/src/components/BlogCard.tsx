@@ -23,7 +23,6 @@ const BlogCard = ({
 	const navigate = useNavigate();
 	// extracitng the tag completely
 	const readTime = readingTime(content.length);
-	console.log(content.length);
 	const regex = /<[^>]+>([^<]+)<\/[^>]+>/g;
 	const matches = content.match(regex);
 	let extractedText = "";
