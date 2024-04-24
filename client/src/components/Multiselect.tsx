@@ -3,20 +3,24 @@ import { CircleX } from "lucide-react";
 import { colors, getRandomColorFromSet } from "../utils/formatDate";
 interface TagsInputProps {
 	tags: string[];
-	setTags: React.Dispatch<React.SetStateAction<string>>;
+	setTags: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
 function TagsInput({ tags, setTags }: TagsInputProps) {
-	function handleKeyDown(e) {
+	function handleKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
 		if (e.key !== "Enter") return;
-		const value = e.target.value;
+		const value = (e.target as HTMLInputElement).value;
 		if (!value.trim()) return;
-		setTags([...tags, value]);
-		e.target.value = "";
+		setTags((prevTags) => [...prevTags, value]);
+		(e.target as HTMLInputElement).value = "";
 	}
 
-	function removeTag(index) {
-		setTags(tags.filter((el, i) => i !== index));
+	function removeTag(index: number) {
+		setTags((prevTags) => {
+			const newTags = [...prevTags];
+			newTags.splice(index, 1);
+			return newTags;
+		});
 	}
 
 	return (

@@ -4,7 +4,7 @@ import { useDebounce } from "../hooks/useDebounce";
 import { filterAtom } from "../store/atoms";
 
 const SearchInput = () => {
-	const [fil, setFil] = useRecoilState(filterAtom);
+	const [, setFil] = useRecoilState(filterAtom);
 	const [val, setVal] = useState("");
 	const debouncedValue = useDebounce(val);
 	useEffect(() => {

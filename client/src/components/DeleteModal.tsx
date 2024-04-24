@@ -12,7 +12,7 @@ function DeleteModal({ id }: { id: string }) {
 	const token = useRecoilValue(tokenAtom);
 	const [loading, setLoading] = useState(false);
 	const navigate = useNavigate();
-	const fetchBlogs = useRecoilRefresher_UNSTABLE(allBlogs);
+	const fetchBlogs = useRecoilRefresher_UNSTABLE(allBlogs(""));
 	async function deleteBlog() {
 		try {
 			setLoading(true);
@@ -29,9 +29,9 @@ function DeleteModal({ id }: { id: string }) {
 			toast.success(data?.message);
 			fetchBlogs();
 			navigate("/blogs");
-		} catch (error) {
+		} catch (error: unknown) {
 			console.log(error);
-			toast.error(error.response.data.message);
+			toast.error(error?.response.data?.message || "An error occured");
 		}
 	}
 	return (

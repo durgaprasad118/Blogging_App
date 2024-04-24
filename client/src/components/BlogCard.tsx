@@ -32,7 +32,9 @@ const BlogCard = ({
 		author = contents?.name;
 	}
 	const names = author?.split(" ");
-	const Author = names[0].charAt(0) + names[names.length - 1].charAt(0);
+	const Author = names
+		? names[0].charAt(0) + names[names.length - 1].charAt(0)
+		: "";
 	const navigate = useNavigate();
 	const readTime = readingTime(content.length);
 	const regex = /<[^>]+>([^<]+)<\/[^>]+>/g;
