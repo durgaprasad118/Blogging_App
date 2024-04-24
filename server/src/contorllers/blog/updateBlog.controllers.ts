@@ -7,25 +7,28 @@ const updateBlog = async (c) => {
   }).$extends(withAccelerate());
   try {
     const id = c.req.param("id");
-    const userId:string = c.get("userId");
+    const userId: string = c.get("userId");
     const body = await c.req.json();
-    const {success} = BlogCreate.safeParse(body);
-    if(!success){
-      c.status(411)
+    const { success } = BlogCreate.safeParse(body);
+    if (!success) {
+      c.status(411);
       return c.json({
         success: false,
-        message: 'please enter your details correctly',
-      })
+        message: "please enter your details correctly",
+      });
     }
     const blog = await prisma.post.update({
       where: {
         id: id,
-        authorId: userId
+        authorId: userId,
       },
       data: {
         title: body.title,
         content: body.content,
         published: body.published,
+        labels: body.labels.map((label: string) => {
+          return label;
+        }),
       },
     });
     return c.json({

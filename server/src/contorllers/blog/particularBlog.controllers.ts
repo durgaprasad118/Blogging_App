@@ -6,11 +6,9 @@ const particularBlog = async (c) => {
   }).$extends(withAccelerate());
   try {
     const id = c.req.param("id");
-    const userId: string = c.get("userId");
     const blogs = await prisma.post.findUnique({
       where: {
         id: id,
-        authorId: userId,
       },
     });
     return c.json({

@@ -23,6 +23,9 @@ const createBlog = async (c) => {
         published: body.published,
         image: body.image,
         authorId: userId,
+        labels: body.labels.map((label: string) => {
+          return label;
+        }),
       },
     });
     return c.json({
@@ -34,6 +37,7 @@ const createBlog = async (c) => {
     });
   } catch (error) {
     console.log(error);
+    c.status(500);
     return c.json({
       success: false,
       message: "Failed to create Blog",
