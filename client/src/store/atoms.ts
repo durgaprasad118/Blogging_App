@@ -24,14 +24,23 @@ const userdetailsAtom = atom({
 		},
 	}),
 });
-const allBlogs = atom({
+const filterAtom = atom({
+	key: "filterAtom",
+	default: "",
+});
+const allBlogs = atomFamily({
 	key: "allBlogs",
-	default: selector({
+	default: selectorFamily({
 		key: "allBlogsSelector",
-		get: async () => {
-			const { data } = await axios.get(`${BASE_URL}/blog/bulk`);
-			return data;
-		},
+		get:
+			() =>
+			async ({ get }) => {
+				const filter = get(filterAtom);
+				const { data } = await axios.get(
+					`${BASE_URL}/blog/bulk?filter=` + filter,
+				);
+				return data;
+			},
 	}),
 });
 
@@ -75,4 +84,5 @@ export {
 	particularBlog,
 	tokenAtom,
 	userdetailsAtom,
+	filterAtom,
 };

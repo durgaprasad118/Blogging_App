@@ -18,7 +18,7 @@ const BlogWrite = () => {
 	const [imageLink, setImageLink] = useState<string | null>("");
 	const { loading, uploadImage, url } = useUpload();
 	const [loadingBlog, setloadingBlog] = useState(false);
-	const fetchBlogs = useRecoilRefresher_UNSTABLE(allBlogs);
+	const fetchBlogs = useRecoilRefresher_UNSTABLE(allBlogs());
 	const token = useRecoilValue(tokenAtom);
 	const [tags, setTags] = useState<string[]>([]);
 	useEffect(() => {
@@ -50,15 +50,15 @@ const BlogWrite = () => {
 					},
 				},
 			);
+			setloadingBlog(false);
+			navigate("/blogs");
 			toast.success(data.message);
 			fetchBlogs();
 			setTitle("");
 			setPublished(false);
 			setContent("");
-			navigate("/blogs");
 			setImageLink("");
 			setImageFile(null);
-			setloadingBlog(false);
 		} catch (error) {
 			console.log(error);
 			toast.error(error.response.data.message);

@@ -163,7 +163,7 @@ const Header = () => {
 							className="text-center bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500 font-bold
             "
 						>
-							Medium
+							InkWell
 						</h1>
 					</div>
 					<NavLink

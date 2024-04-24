@@ -36,84 +36,86 @@ const Signup = () => {
 		}
 	}
 	return (
-		<div className="  dark:bg-gray-900 bg-blend-multiply text-gray-800 dark:text-gray-50  ">
-			<div className="flex flex-col w-screen mx-auto   justify-center px-6 py-8   lg:py-0">
-				<form
-					onSubmit={submitHandler}
-					className="flex max-w-md flex-col gap-4"
-				>
-					<div>
-						<div className="mb-2 block">
-							<Label htmlFor="email2" value="Name" />
+		<section className=" dark:bg-gray-900 bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')] dark:bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern-dark.svg')] bg-blend-multiply text-gray-800 dark:text-gray-50">
+			<div className="p-2 md:p-0  md:h-screen  flex items-center justify-center h-screen py-8   lg:py-0">
+				<div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+					<form
+						onSubmit={submitHandler}
+						className="flex max-w-md p-3 md:p-10 flex-col gap-4"
+					>
+						<h1 className="text-center mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl">
+							<span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">
+								Sign{" "}
+							</span>
+							Up
+						</h1>
+						<div>
+							<div className="mb-2 block">
+								<Label htmlFor="email2" value="Name" />
+							</div>
+							<TextInput
+								id="name"
+								type="text"
+								placeholder="name"
+								value={name}
+								onChange={(e) => setName(e.target.value)}
+								required
+								shadow
+							/>
 						</div>
-						<TextInput
-							id="name"
-							type="text"
-							placeholder="name"
-							value={name}
-							onChange={(e) => setName(e.target.value)}
-							required
-							shadow
-						/>
-					</div>
-					<div>
-						<div className="mb-2 block">
-							<Label htmlFor="email2" value="Your email" />
+						<div>
+							<div className="mb-2 block">
+								<Label htmlFor="email2" value="Your email" />
+							</div>
+							<TextInput
+								id="email2"
+								type="email"
+								value={email}
+								onChange={(e) => setEmail(e.target.value)}
+								placeholder="name@gamil.com"
+								required
+								shadow
+							/>
 						</div>
-						<TextInput
-							id="email2"
-							type="email"
-							value={email}
-							onChange={(e) => setEmail(e.target.value)}
-							placeholder="name@gamil.com"
-							required
-							shadow
-						/>
-					</div>
-					<div>
-						<div className="mb-2 block">
-							<Label htmlFor="password2" value="Your password" />
+						<div>
+							<div className="mb-2 block">
+								<Label
+									htmlFor="password2"
+									value="Your password"
+								/>
+							</div>
+							<TextInput
+								id="password2"
+								type="password"
+								value={password}
+								onChange={(e) => setPassword(e.target.value)}
+								placeholder="* * * *"
+								required
+								shadow
+							/>
 						</div>
-						<TextInput
-							id="password2"
-							type="password"
-							value={password}
-							onChange={(e) => setPassword(e.target.value)}
-							required
-							shadow
-						/>
-					</div>
-					<div className="flex items-center gap-2">
-						<Checkbox id="agree" />
-						<Label htmlFor="agree" className="flex">
-							I agree with the&nbsp;
-							<Link to={"/"}>
+						<Button
+							isProcessing={loading}
+							disabled={loading}
+							type="submit"
+							color="blue"
+							className="my-2"
+						>
+							Register new account
+						</Button>
+
+						<div className="mt-1  opacity-80  text-center gap-2">
+							Already have an account{" "}
+							<Link to={"/login"}>
 								<span className="text-blue-600 underline dark:text-blue-500">
-									terms and conditions
+									Login
 								</span>
 							</Link>
-						</Label>
-					</div>
-					<Button
-						isProcessing={loading}
-						disabled={loading}
-						type="submit"
-						color="blue"
-					>
-						Register new account
-					</Button>
-
-					<div className="mt-2  opacity-80  text-center gap-2">
-						Already have an account
-						<Link to={"/login"}>
-							<span className="text-blue-600 underline dark:text-blue-500">
-								Login
-							</span>
-						</Link>
-					</div>
-				</form>
+						</div>
+					</form>
+				</div>
 			</div>
-		</div>
+		</section>
 	);
 };
 

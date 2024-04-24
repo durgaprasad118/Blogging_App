@@ -7,14 +7,15 @@ import {
 	getRandomColorFromSet,
 	readingTime,
 } from "../utils/formatDate";
-import { color } from "framer-motion";
+import { useRecoilValueLoadable } from "recoil";
+import { userdetailsAtom } from "../store/atoms";
 interface CardI {
 	title: string;
 	image: string;
 	content: string;
 	id: string;
 	createdAt: Date;
-	author: string;
+	author?: string;
 	labels: string[];
 }
 const BlogCard = ({
@@ -26,7 +27,11 @@ const BlogCard = ({
 	labels,
 	author,
 }: CardI) => {
-	const names = author.split(" ");
+	const { state, contents } = useRecoilValueLoadable(userdetailsAtom);
+	if (state == "hasValue") {
+		author = contents?.name;
+	}
+	const names = author?.split(" ");
 	const Author = names[0].charAt(0) + names[names.length - 1].charAt(0);
 	const navigate = useNavigate();
 	const readTime = readingTime(content.length);

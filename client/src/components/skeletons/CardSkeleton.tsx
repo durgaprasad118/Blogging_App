@@ -3,10 +3,7 @@ import { PencilLine } from "lucide-react";
 
 const BlogCardSkeleton = () => {
 	return (
-		<div
-			data-aos="zoom-in-up"
-			className="flex  flex-col-reverse justify-between cursor-pointer  md:w-3/4 w-full  bg-gray-50  md:p-2 mb-4 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg items-center md:gap-10  shadow md:flex-row "
-		>
+		<div className="flex  flex-col-reverse justify-between cursor-pointer  md:w-3/4 w-full  bg-gray-50  md:p-2 mb-4 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg items-center md:gap-10  shadow md:flex-row ">
 			<div className="flex flex-col items-start p-4  md:p-5 leading-normal">
 				<h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
 					<div className="w-32 h-4 bg-gray-200 rounded animate-pulse"></div>

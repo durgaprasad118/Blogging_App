@@ -1,13 +1,16 @@
+import { useNavigate } from "react-router-dom";
 import { useRecoilValueLoadable } from "recoil";
-import { allBlogs } from "../store/atoms";
 import { BlogCard, SearchInput } from "../components";
 import { BlogCardSkeleton } from "../components/skeletons";
-const Blogs = () => {
-	const arr = [1, 2, 3, 4, 5, 6];
+import { userBlogs } from "../store/atoms";
+
+const UserDashBoard = () => {
+	const navigate = useNavigate();
 	const {
 		state,
 		contents: { data },
-	} = useRecoilValueLoadable(allBlogs());
+	} = useRecoilValueLoadable(userBlogs);
+	const arr = [1, 2, 3, 4, 5, 6];
 	if (state == "loading") {
 		return (
 			<section className="bg-white dark:bg-gray-900 bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')] dark:bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern-dark.svg')]">
@@ -25,22 +28,34 @@ const Blogs = () => {
 			</section>
 		);
 	}
-
 	return (
 		<section className="bg-white dark:bg-gray-900 bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')] dark:bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern-dark.svg')]">
 			<div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 z-10 relative  gap-4 h-full">
 				<div className="mb-4">
-					<SearchInput />
+					<h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+						Your {"   "}
+						<span className="text-blue-600 dark:text-blue-500">
+							Blogs
+						</span>{" "}
+					</h1>
 				</div>
 				<div className="flex items-center justify-center text-center">
 					{data?.blogs.length === 0 && (
 						<p className="my-3 text-lg text-gray-500 md:text-xl dark:text-gray-400">
-							No blogs found from the search result
+							You haven't written any blogs
+							<a
+								onClick={() => {
+									navigate("/write");
+								}}
+								className="font-medium text-blue-600 underline dark:text-blue-500 dark:hover:text-blue-600 hover:text-blue-700 hover:no-underline"
+							>
+								Write here
+							</a>
 						</p>
 					)}
 				</div>
 				<div className="flex items-center justify-center flex-col">
-					{data?.blogs.map((blog) => {
+					{data?.blogs.map((blog: any) => {
 						return (
 							<BlogCard
 								key={blog.id}
@@ -49,7 +64,6 @@ const Blogs = () => {
 								id={blog.id}
 								createdAt={blog.createdAt}
 								image={blog.image}
-								author={blog.author.name}
 								labels={blog.labels}
 							/>
 						);
@@ -61,4 +75,4 @@ const Blogs = () => {
 	);
 };
 
-export { Blogs };
+export { UserDashBoard };

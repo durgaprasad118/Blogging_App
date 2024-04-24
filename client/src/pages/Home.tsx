@@ -1,12 +1,8 @@
-import { useRecoilValueLoadable } from "recoil";
+import { useNavigate } from "react-router-dom";
 import { Panel } from "../components";
 import { data } from "../utils";
-import { userBlogs } from "../store/atoms";
 const Home = () => {
-	const { state, contents } = useRecoilValueLoadable(userBlogs);
-	if (state == "hasValue") {
-		console.log(contents);
-	}
+	const navigate = useNavigate();
 	return (
 		<div className=" dark:bg-gray-900 bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')] dark:bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern-dark.svg')] bg-blend-multiply text-gray-800 dark:text-gray-50">
 			<section className="bg-white dark:bg-gray-900 bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')] dark:bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern-dark.svg')]">
@@ -22,7 +18,7 @@ const Home = () => {
 							New{" "}
 						</span>
 						<span className="text-sm font-medium">
-							DevSikShaHub offers free Courses soon!Checkout here
+							Discover more of what matters to you
 						</span>
 						<svg
 							className="w-2.5 h-2.5 ms-2 rtl:rotate-180"
@@ -41,14 +37,13 @@ const Home = () => {
 						</svg>
 					</a>
 					<h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
-						Upskill & Grab your{" "}
-						<span className="text-blue-600"> Dream Offer</span>
+						Don't just scroll, create. Start your{" "}
+						<span className="text-blue-600">blog today. </span>
 					</h1>
 					<p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-200">
-						DevSikShaHub, the go to place for affordable and quality
-						content
+						Write freely, publish easily. Your voice, amplified.
 					</p>
-					<form className="w-full max-w-md mx-auto">
+					<div className="w-full max-w-md mx-auto">
 						<label
 							htmlFor="default-email"
 							className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
@@ -78,11 +73,12 @@ const Home = () => {
 							<button
 								type="submit"
 								className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+								onClick={() => navigate("/signup")}
 							>
 								Sign up
 							</button>
 						</div>
-					</form>
+					</div>
 				</div>
 				<div className="bg-gradient-to-b from-blue-50 to-transparent dark:from-blue-900 w-full h-full absolute top-0 left-0 z-0"></div>
 			</section>
@@ -105,15 +101,16 @@ const Home = () => {
 							>
 								<path d="M11 0H2a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h9a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2Zm8.585 1.189a.994.994 0 0 0-.9-.138l-2.965.983a1 1 0 0 0-.685.949v8a1 1 0 0 0 .675.946l2.965 1.02a1.013 1.013 0 0 0 1.032-.242A1 1 0 0 0 20 12V2a1 1 0 0 0-.415-.811Z" />
 							</svg>
-							Tutorial
+							Connect
 						</a>
 						<h1 className="text-gray-900 dark:text-white text-3xl md:text-5xl font-extrabold mb-2">
-							Explore Our diverse range of courses
+							Explore diverse range of blogs{" "}
 						</h1>
 						<p className="text-lg font-normal text-gray-500 dark:text-gray-400 mb-6">
-							Discover through detailed tutorials: algorithm
-							analysis, implementation, and optimization.Previews
-							are also avialable
+							Explore a vast library of blogs and connect with
+							passionate creators who share your interests. Find
+							inspiration, spark discussions, and build a
+							supportive community around your writing.
 						</p>
 						<a
 							href="#"
@@ -155,110 +152,15 @@ const Home = () => {
 								>
 									<path d="M17 11h-2.722L8 17.278a5.512 5.512 0 0 1-.9.722H17a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1ZM6 0H1a1 1 0 0 0-1 1v13.5a3.5 3.5 0 1 0 7 0V1a1 1 0 0 0-1-1ZM3.5 15.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2ZM16.132 4.9 12.6 1.368a1 1 0 0 0-1.414 0L9 3.55v9.9l7.132-7.132a1 1 0 0 0 0-1.418Z" />
 								</svg>
-								Tutorials
+								Rich Text Editor
 							</a>
 							<h2 className="text-gray-900 dark:text-white text-3xl font-extrabold mb-2">
-								Top class quality video lectures
+								Craft beautiful, formatted posts
 							</h2>
 							<p className="text-lg font-normal text-gray-500 dark:text-gray-400 mb-4">
-								The live and recorded video lectures with the
-								best quality are available 24x7
-							</p>
-							<a
-								href="#"
-								className="text-blue-600 dark:text-blue-500 hover:underline font-medium text-lg inline-flex items-center"
-							>
-								Read more
-								<svg
-									className="w-3.5 h-3.5 ms-2 rtl:rotate-180"
-									aria-hidden="true"
-									xmlns="http://www.w3.org/2000/svg"
-									fill="none"
-									viewBox="0 0 14 10"
-								>
-									<path
-										stroke="currentColor"
-										strokeLinecap="round"
-										strokeLinejoin="round"
-										strokeWidth="2"
-										d="M1 5h12m0 0L9 1m4 4L9 9"
-									/>
-								</svg>
-							</a>
-						</div>
-						<div
-							data-aos="zoom-in-left"
-							className="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-8 md:p-12"
-						>
-							<a
-								href="#"
-								className="bg-green-100 text-green-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-green-400 mb-2"
-							>
-								<svg
-									className="w-2.5 h-2.5 me-1.5"
-									aria-hidden="true"
-									xmlns="http://www.w3.org/2000/svg"
-									fill="currentColor"
-									viewBox="0 0 18 18"
-								>
-									<path d="M17 11h-2.722L8 17.278a5.512 5.512 0 0 1-.9.722H17a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1ZM6 0H1a1 1 0 0 0-1 1v13.5a3.5 3.5 0 1 0 7 0V1a1 1 0 0 0-1-1ZM3.5 15.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2ZM16.132 4.9 12.6 1.368a1 1 0 0 0-1.414 0L9 3.55v9.9l7.132-7.132a1 1 0 0 0 0-1.418Z" />
-								</svg>
-								Assignments
-							</a>
-							<h2 className="text-gray-900 dark:text-white text-3xl font-extrabold mb-2">
-								Stay on the top with our assignment hub
-							</h2>
-							<p className="text-lg font-normal text-gray-500 dark:text-gray-400 mb-4">
-								Assignments and questions are provided to
-								understand the concepts well.
-							</p>
-							<a
-								href="#"
-								className="text-blue-600 dark:text-blue-500 hover:underline font-medium text-lg inline-flex items-center"
-							>
-								Read more
-								<svg
-									className="w-3.5 h-3.5 ms-2 rtl:rotate-180"
-									aria-hidden="true"
-									xmlns="http://www.w3.org/2000/svg"
-									fill="none"
-									viewBox="0 0 14 10"
-								>
-									<path
-										stroke="currentColor"
-										strokeLinecap="round"
-										strokeLinejoin="round"
-										strokeWidth="2"
-										d="M1 5h12m0 0L9 1m4 4L9 9"
-									/>
-								</svg>
-							</a>
-						</div>
-						<div
-							data-aos="zoom-in-right"
-							className="bg-gray-50 dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg p-8 md:p-12"
-						>
-							<a
-								href="#"
-								className="bg-green-100 text-green-800 text-xs font-medium inline-flex items-center px-2.5 py-0.5 rounded-md dark:bg-gray-700 dark:text-green-400 mb-2"
-							>
-								<svg
-									className="w-2.5 h-2.5 me-1.5"
-									aria-hidden="true"
-									xmlns="http://www.w3.org/2000/svg"
-									fill="currentColor"
-									viewBox="0 0 18 18"
-								>
-									<path d="M17 11h-2.722L8 17.278a5.512 5.512 0 0 1-.9.722H17a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1ZM6 0H1a1 1 0 0 0-1 1v13.5a3.5 3.5 0 1 0 7 0V1a1 1 0 0 0-1-1ZM3.5 15.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2ZM16.132 4.9 12.6 1.368a1 1 0 0 0-1.414 0L9 3.55v9.9l7.132-7.132a1 1 0 0 0 0-1.418Z" />
-								</svg>
-								Guidance
-							</a>
-							<h2 className="text-gray-900 dark:text-white text-3xl font-extrabold mb-2">
-								Expert guidance
-							</h2>
-							<p className="text-lg font-normal text-gray-500 dark:text-gray-400 mb-4">
-								Level up in life and your career with the
-								guidance of the best mentors and experts around.
+								Craft stunning blogs with our rich text editor.
+								Edit freely, format beautifully, and embed media
+								for an impactful experience with WYSIWYG editor
 							</p>
 							<a
 								href="#"
@@ -305,14 +207,14 @@ const Home = () => {
 										d="M5 4 1 8l4 4m10-8 4 4-4 4M11 1 9 15"
 									/>
 								</svg>
-								Code
+								Organize
 							</a>
 							<h2 className="text-gray-900 dark:text-white text-3xl font-extrabold mb-2">
-								Learn By doing
+								Keep organized with clear categories{" "}
 							</h2>
 							<p className="text-lg font-normal text-gray-500 dark:text-gray-400 mb-4">
-								Learn things by building awesome projects and
-								doing open source contributions
+								Add multiple tags for clean organizing of blogs.
+								Create and access with any device
 							</p>
 							<a
 								href="#"

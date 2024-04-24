@@ -8,6 +8,7 @@ import {
 	Login,
 	Settings,
 	Signup,
+	UserDashBoard,
 } from "../pages";
 import { Blogs } from "../pages/Blogs";
 import { ProtectedRoute } from "../hooks";
@@ -49,6 +50,14 @@ const Routing = () => {
 						element={
 							<ProtectedRoute>
 								<Settings />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path="/myblogs"
+						element={
+							<ProtectedRoute>
+								<UserDashBoard />
 							</ProtectedRoute>
 						}
 					/>

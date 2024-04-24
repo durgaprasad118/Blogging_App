@@ -47,63 +47,80 @@ const Settings = () => {
 		}
 	}
 	return (
-		<div className="  dark:bg-gray-900 bg-blend-multiply text-gray-800 dark:text-gray-50  ">
-			<div className="flex flex-col w-screen mx-auto   justify-center px-6 py-8   lg:py-0">
-				<form
-					onSubmit={submitHandler}
-					className="flex max-w-md flex-col gap-4"
-				>
-					<div>
-						<div className="mb-2 block">
-							<Label htmlFor="name" value="Name" />
-						</div>
-						<TextInput
-							id="email2"
-							type="text"
-							value={name}
-							onChange={(e) => setName(e.target.value)}
-							placeholder="xyzName"
-							required
-							shadow
-						/>
-					</div>
-					<div>
-						<div className="mb-2 block">
-							<Label htmlFor="email" value="Current Password" />
-						</div>
-						<TextInput
-							id="email"
-							type="email"
-							value={Currentpassword}
-							onChange={(e) => setCurrentpassword(e.target.value)}
-							placeholder="..."
-							shadow
-						/>
-					</div>
-					<div>
-						<div className="mb-2 block">
-							<Label htmlFor="password2" value="New password" />
-						</div>
-						<TextInput
-							id="password2"
-							type="password"
-							value={Newpassword}
-							placeholder="...."
-							onChange={(e) => setNewpassword(e.target.value)}
-							shadow
-						/>
-					</div>
-					<Button
-						isProcessing={loading}
-						disabled={loading}
-						type="submit"
-						color="blue"
+		<section className=" dark:bg-gray-900 bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')] dark:bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern-dark.svg')] bg-blend-multiply text-gray-800 dark:text-gray-50">
+			<div className="p-2 md:p-0  md:h-screen  flex items-center justify-center h-screen py-8   lg:py-0">
+				<div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+					<form
+						onSubmit={submitHandler}
+						className="flex max-w-md p-3 md:p-10 flex-col gap-4"
 					>
-						Update Details
-					</Button>
-				</form>
+						<h1 className="text-center mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-5xl">
+							<span className="text-transparent bg-clip-text bg-gradient-to-r to-emerald-600 from-sky-400">
+								Update{" "}
+							</span>
+							Details
+						</h1>
+
+						<div>
+							<div className="mb-2 block">
+								<Label htmlFor="name" value="Name" />
+							</div>
+							<TextInput
+								id="email2"
+								type="text"
+								value={name}
+								onChange={(e) => setName(e.target.value)}
+								placeholder="xyzName"
+								required
+								shadow
+							/>
+						</div>
+						<div>
+							<div className="mb-2 block">
+								<Label
+									htmlFor="email"
+									value="Current Password"
+								/>
+							</div>
+							<TextInput
+								id="email"
+								type="email"
+								value={Currentpassword}
+								onChange={(e) =>
+									setCurrentpassword(e.target.value)
+								}
+								placeholder="..."
+								shadow
+							/>
+						</div>
+						<div>
+							<div className="mb-2 block">
+								<Label
+									htmlFor="password2"
+									value="New password"
+								/>
+							</div>
+							<TextInput
+								id="password2"
+								type="password"
+								value={Newpassword}
+								placeholder="...."
+								onChange={(e) => setNewpassword(e.target.value)}
+								shadow
+							/>
+						</div>
+						<Button
+							isProcessing={loading}
+							disabled={loading}
+							type="submit"
+							color="blue"
+						>
+							Update Details
+						</Button>
+					</form>
+				</div>
 			</div>
-		</div>
+		</section>
 	);
 };
 
