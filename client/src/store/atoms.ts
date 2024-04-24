@@ -64,7 +64,7 @@ const particularBlog = atomFamily({
 	default: selectorFamily({
 		key: `particularBlog_$`,
 		get:
-			(id) =>
+			(id: string) =>
 			async ({ get }) => {
 				const Usertoken = get(tokenAtom);
 				const { data } = await axios.get(`${BASE_URL}/blog/${id}`, {
