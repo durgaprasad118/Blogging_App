@@ -14,13 +14,13 @@ const BlogEdit = () => {
 	const BASE_URL = import.meta.env.VITE_URL;
 	const { id } = useParams();
 	const navigate = useNavigate();
-	const { state, contents } = useRecoilValueLoadable(particularBlog(id));
+	const { state, contents } = useRecoilValueLoadable(particularBlog(id!));
 	const [content, setContent] = useState("");
 	const [published, setPublished] = useState(false);
 	const [title, setTitle] = useState("");
 	const [loadingBlog, setloadingBlog] = useState(false);
 	const token = useRecoilValue(tokenAtom);
-	const refresh = useRecoilRefresher_UNSTABLE(particularBlog(id));
+	const refresh = useRecoilRefresher_UNSTABLE(particularBlog(id!));
 	const fetchBlogs = useRecoilRefresher_UNSTABLE(allBlogs(""));
 	const [tags, setTags] = useState<string[]>([]);
 	useEffect(() => {

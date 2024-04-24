@@ -11,7 +11,7 @@ const BlogPage = () => {
 	const userId = useRecoilValue(userIdAtom);
 	const { id } = useParams();
 	const navigate = useNavigate();
-	const { state, contents } = useRecoilValueLoadable(particularBlog(id));
+	const { state, contents } = useRecoilValueLoadable(particularBlog(id!));
 
 	if (state === "loading") {
 		return <BlogPageSkeleton />;
