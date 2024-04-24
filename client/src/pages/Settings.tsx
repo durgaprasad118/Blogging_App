@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { Button, Label, TextInput } from "flowbite-react";
 import { useEffect, useState } from "react";
 import {
@@ -42,8 +42,10 @@ const Settings = () => {
 			toast.success(data.message);
 			refresh();
 		} catch (error: unknown) {
-			setLoading(false);
-			toast.error(error?.response?.data?.message);
+			if (error instanceof AxiosError) {
+				console.log(error);
+				toast.error(error.response?.data?.message);
+			}
 		}
 	}
 	return (

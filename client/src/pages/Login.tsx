@@ -1,5 +1,5 @@
-import axios from "axios";
-import { Button, Checkbox, Label, TextInput } from "flowbite-react";
+import axios, { AxiosError } from "axios";
+import { Button, Label, TextInput } from "flowbite-react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
@@ -33,7 +33,11 @@ const Login = () => {
 			setEmail("");
 			setPassword("");
 			setLoading(false);
-			toast.error(error?.response?.data?.message);
+
+			if (error instanceof AxiosError) {
+				console.log(error);
+				toast.error(error.response?.data?.message);
+			}
 		}
 	}
 	return (

@@ -6,8 +6,9 @@ export interface EditorI {
 }
 
 const apiKey = import.meta.env.VITE_KEY;
+
 function Editorr({ content, setContent }: EditorI) {
-	const onEditorInputChange = (newValue) => {
+	const onEditorInputChange = (newValue: string) => {
 		setContent(newValue);
 	};
 	return (
@@ -28,16 +29,10 @@ function Editorr({ content, setContent }: EditorI) {
 						{ value: "First.Name", title: "First Name" },
 						{ value: "Email", title: "Email" },
 					],
-					ai_request: (request, respondWith) =>
-						respondWith.string(() =>
-							Promise.reject(
-								"See docs to implement AI Assistant",
-							),
-						),
+					ai_request: (respondWith: (value: string) => void) =>
+						respondWith("See docs to implement AI Assistant"),
 				}}
-				onEditorChange={(newValue, editor) =>
-					onEditorInputChange(newValue, editor)
-				}
+				onEditorChange={(newValue) => onEditorInputChange(newValue)}
 				value={content}
 			/>
 		</div>

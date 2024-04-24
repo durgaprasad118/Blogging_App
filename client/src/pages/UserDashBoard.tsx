@@ -4,6 +4,16 @@ import { BlogCard, SearchInput } from "../components";
 import { BlogCardSkeleton } from "../components/skeletons";
 import { userBlogs } from "../store/atoms";
 
+interface BlogI {
+	authorId: string;
+	labels: string[];
+	createdAt: Date;
+	id: string;
+	content: string;
+	image: string;
+	title: string;
+	published: boolean;
+}
 const UserDashBoard = () => {
 	const navigate = useNavigate();
 	const {
@@ -55,7 +65,7 @@ const UserDashBoard = () => {
 					)}
 				</div>
 				<div className="flex items-center justify-center flex-col">
-					{data?.blogs.map((blog: any) => {
+					{data?.blogs.map((blog: BlogI) => {
 						return (
 							<BlogCard
 								key={blog.id}

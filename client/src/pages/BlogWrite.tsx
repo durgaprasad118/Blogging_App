@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { Button } from "flowbite-react";
 import { Image } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -18,7 +18,7 @@ const BlogWrite = () => {
 	const [imageLink, setImageLink] = useState<string | null>("");
 	const { loading, uploadImage, url } = useUpload();
 	const [loadingBlog, setloadingBlog] = useState(false);
-	const fetchBlogs = useRecoilRefresher_UNSTABLE(allBlogs());
+	const fetchBlogs = useRecoilRefresher_UNSTABLE(allBlogs(""));
 	const token = useRecoilValue(tokenAtom);
 	const [tags, setTags] = useState<string[]>([]);
 	useEffect(() => {
@@ -28,11 +28,11 @@ const BlogWrite = () => {
 	}, [loading, url]);
 	const SubmitHandler = async () => {
 		try {
-			setloadingBlog(true);
 			if (!title || !imageLink || !content) {
 				toast.error("all feilds are mandatory");
 				return;
 			}
+			setloadingBlog(true);
 			const { data } = await axios.post(
 				`${BASE_URL}/blog/create`,
 				{
@@ -60,14 +60,16 @@ const BlogWrite = () => {
 			setImageLink("");
 			setImageFile(null);
 		} catch (error) {
-			console.log(error);
-			toast.error(error.response.data.message);
 			setTitle("");
 			setPublished(false);
 			setContent("");
 			setImageLink("");
 			setImageFile(null);
 			setloadingBlog(false);
+			if (error instanceof AxiosError) {
+				console.log(error);
+				toast.error(error.response?.data?.message);
+			}
 		}
 	};
 

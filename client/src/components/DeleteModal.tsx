@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { Button, Modal } from "flowbite-react";
 import { Info } from "lucide-react";
 import { useState } from "react";
@@ -30,8 +30,10 @@ function DeleteModal({ id }: { id: string }) {
 			fetchBlogs();
 			navigate("/blogs");
 		} catch (error: unknown) {
-			console.log(error);
-			toast.error(error?.response.data?.message || "An error occured");
+			if (error instanceof AxiosError) {
+				console.log(error);
+				toast.error(error.response?.data?.message);
+			}
 		}
 	}
 	return (

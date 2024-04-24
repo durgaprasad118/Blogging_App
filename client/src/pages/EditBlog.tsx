@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import { Button } from "flowbite-react";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -21,7 +21,7 @@ const BlogEdit = () => {
 	const [loadingBlog, setloadingBlog] = useState(false);
 	const token = useRecoilValue(tokenAtom);
 	const refresh = useRecoilRefresher_UNSTABLE(particularBlog(id));
-	const fetchBlogs = useRecoilRefresher_UNSTABLE(allBlogs);
+	const fetchBlogs = useRecoilRefresher_UNSTABLE(allBlogs(""));
 	const [tags, setTags] = useState<string[]>([]);
 	useEffect(() => {
 		if (state == "hasValue") {
@@ -35,6 +35,7 @@ const BlogEdit = () => {
 		try {
 			setloadingBlog(true);
 			if (!title || !content) {
+				setloadingBlog(false);
 				toast.error("all feilds are mandatory");
 				return;
 			}
@@ -54,6 +55,7 @@ const BlogEdit = () => {
 					},
 				},
 			);
+			setloadingBlog(false);
 			toast.success(data.message);
 			navigate("/blog/" + id);
 			setTitle("");
@@ -61,14 +63,16 @@ const BlogEdit = () => {
 			fetchBlogs();
 			setPublished(false);
 			setContent("");
-			setloadingBlog(false);
 		} catch (error) {
-			console.log(error);
-			toast.error(error.response.data.message);
+			setloadingBlog(false);
 			setTitle("");
 			setPublished(false);
 			setContent("");
 			setloadingBlog(false);
+			if (error instanceof AxiosError) {
+				console.log(error);
+				toast.error(error.response?.data?.message);
+			}
 		}
 	};
 
