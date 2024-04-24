@@ -5,7 +5,7 @@ import { useRecoilValue } from "recoil";
 import { tokenAtom } from "../store/atoms";
 import { SquarePen } from "lucide-react";
 import { Dropdown } from "./Dropdown";
-
+import logo from "../assets/logo.png";
 const Header = () => {
 	const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 	const toggleMobileMenu = () => {
@@ -60,8 +60,8 @@ const Header = () => {
 						<div className="flex flex-shrink-0 items-center">
 							<Link to={"/"}>
 								<img
-									className="h-8 w-auto md:block hidden"
-									src="https://flowbite.com/docs/images/logo.svg"
+									className="h-12 w-12 dark:bg-gray-200 dark:rounded-full md:block hidden"
+									src={logo}
 									alt="Your Company"
 								/>
 							</Link>
@@ -155,8 +155,8 @@ const Header = () => {
 				<div className="space-y-1 px-2 pb-3 pt-2 bg-gray-50 dark:text-gray-200 text-gray-600   dark:bg-gray-800 ">
 					<div className="flex items-center justify-center gap-x-1">
 						<img
-							className="h-8 w-auto"
-							src={"https://flowbite.com/docs/images/logo.svg"}
+							className="h-12 w-12 dark:bg-gray-200 dark:rounded-full md:block hidden"
+							src={logo}
 							alt="Your Company"
 						/>
 						<h1

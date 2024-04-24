@@ -1,3 +1,4 @@
+import logo from "../assets/logo.png";
 const Footer = () => {
 	return (
 		<footer className="dark:bg-gray-900 bg-gray-50  text-gray-800 dark:text-gray-50 w-full ">
@@ -6,10 +7,8 @@ const Footer = () => {
 					<div className="mb-6 md:mb-0">
 						<a href="#" className="flex items-center">
 							<img
-								src={
-									"https://flowbite.com/docs/images/logo.svg"
-								}
-								className="h-8 mr-3"
+								src={logo}
+								className="h-12 w-12 mr-2 dark:bg-gray-200 dark:rounded-full md:block hidden"
 								alt="InkWell Logo"
 							/>
 							<span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">

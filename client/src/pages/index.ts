@@ -1,3 +1,4 @@
+export { About } from "./About";
 export { BlogPage } from "./BlogPage";
 export { BlogWrite } from "./BlogWrite";
 export { BlogEdit } from "./EditBlog";
