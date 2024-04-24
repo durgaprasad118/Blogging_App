@@ -5,6 +5,10 @@ const tokenAtom = atom({
 	key: "tokenAtom",
 	default: localStorage.getItem("token"),
 });
+const userIdAtom = atom({
+	key: "userIdAtom",
+	default: "",
+});
 const userdetailsAtom = atom({
 	key: "userdetailsAtom",
 	default: selector({
@@ -30,6 +34,22 @@ const allBlogs = atom({
 		},
 	}),
 });
+
+const userBlogs = atom({
+	key: "userBlogs",
+	default: selector({
+		key: "userBlogSelector",
+		get: async ({ get }) => {
+			const Usertoken = get(tokenAtom);
+			const { data } = await axios.get(`${BASE_URL}/blog/usrBlogs`, {
+				headers: {
+					Authorization: "Bearer " + Usertoken,
+				},
+			});
+			return data;
+		},
+	}),
+});
 const particularBlog = atomFamily({
 	key: "particularBlog",
 	default: selectorFamily({
@@ -48,4 +68,11 @@ const particularBlog = atomFamily({
 	}),
 });
 
-export { allBlogs, particularBlog, tokenAtom, userdetailsAtom };
+export {
+	allBlogs,
+	userIdAtom,
+	userBlogs,
+	particularBlog,
+	tokenAtom,
+	userdetailsAtom,
+};

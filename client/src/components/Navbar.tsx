@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { DarkThemeToggle } from "flowbite-react";
-import { Dropdown } from "./ui";
 import { Link, NavLink } from "react-router-dom";
 import { useRecoilValue } from "recoil";
 import { tokenAtom } from "../store/atoms";
+import { SquarePen } from "lucide-react";
+import { Dropdown } from "./Dropdown";
+
 const Header = () => {
 	const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
 	const toggleMobileMenu = () => {
@@ -11,7 +13,7 @@ const Header = () => {
 	};
 	const userInfo = useRecoilValue(tokenAtom);
 	return (
-		<nav className="bg-opacity-40 backdrop-blur-lg bg-gray-100  dark:bg-gray-800 sticky top-0 w-full z-[10000]">
+		<nav className="bg-opacity-40 backdrop-blur-lg bg-gray-100  dark:bg-gray-800 sticky top-0 w-full z-[100]">
 			<div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
 				<div className="relative flex h-16 items-center justify-between">
 					<div className="absolute inset-y-0 left-0 flex items-center gap-x-1 sm:hidden">
@@ -112,9 +114,10 @@ const Header = () => {
 									<Link
 										to={"/write"}
 										type="button"
-										className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-md md:text-sm md:px-5 md:py-2.5 px-2 py-1.5 text-xs text-center mr-2  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 "
+										className="text-white bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 font-medium rounded-lg md:text-sm md:px-5 md:py-2.5 px-2 py-1.5 text-xs text-center mr-2  dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 "
 									>
-										Write Blog
+										<SquarePen className="inline pr-2" />
+										Write{" "}
 									</Link>
 									<DarkThemeToggle className="block md:hidden"></DarkThemeToggle>
 									<>

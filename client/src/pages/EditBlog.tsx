@@ -8,7 +8,7 @@ import {
 	useRecoilValueLoadable,
 } from "recoil";
 import { toast } from "sonner";
-import { Editorr } from "../components";
+import { Editorr, TagsInput } from "../components";
 import { allBlogs, particularBlog, tokenAtom } from "../store/atoms";
 const BlogEdit = () => {
 	const BASE_URL = import.meta.env.VITE_URL;
@@ -22,11 +22,13 @@ const BlogEdit = () => {
 	const token = useRecoilValue(tokenAtom);
 	const refresh = useRecoilRefresher_UNSTABLE(particularBlog(id));
 	const fetchBlogs = useRecoilRefresher_UNSTABLE(allBlogs);
+	const [tags, setTags] = useState<string[]>([]);
 	useEffect(() => {
 		if (state == "hasValue") {
 			setTitle(contents.title);
 			setContent(contents.content);
 			setPublished(contents.published);
+			setTags([...contents.labels]);
 		}
 	}, [state, setPublished, setContent, setTitle, contents]);
 	const SubmitHandler = async () => {
@@ -42,6 +44,9 @@ const BlogEdit = () => {
 					title: title,
 					published: published,
 					content: content,
+					labels: tags.map((x: string) => {
+						return x;
+					}),
 				},
 				{
 					headers: {
@@ -116,8 +121,11 @@ const BlogEdit = () => {
 				{/* 		Upload */}
 				{/* 	</Button> */}
 				{/* </div> */}
+				<div className="py-3 w-auto px-1">
+					<TagsInput tags={tags} setTags={setTags} />
+				</div>
 				<Editorr content={content} setContent={setContent} />{" "}
-				<div className="flex items-center justify-center">
+				<div className="flex my-2 items-center justify-center">
 					<Button
 						onClick={SubmitHandler}
 						color="blue"

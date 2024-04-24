@@ -10,4 +10,17 @@ function readingTime(wordCount: number): number {
 	const minutes = wordCount / wordsPerMinute;
 	return Math.ceil(minutes);
 }
-export { dateFormat, readingTime };
+function getRandomColorFromSet(colors: string[]) {
+	const index = Math.floor(Math.random() * colors.length);
+	return colors[index];
+}
+const colors = [
+	"info",
+	"failure",
+	"success",
+	"warning",
+	"indigo",
+	"purple",
+	"pink",
+];
+export { dateFormat, readingTime, getRandomColorFromSet, colors };

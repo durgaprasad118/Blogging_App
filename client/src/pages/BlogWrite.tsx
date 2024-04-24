@@ -1,12 +1,15 @@
 import axios from "axios";
 import { Button } from "flowbite-react";
+import { Image } from "lucide-react";
 import { useEffect, useState } from "react";
-import { useRecoilValue } from "recoil";
+import { useNavigate } from "react-router-dom";
+import { useRecoilRefresher_UNSTABLE, useRecoilValue } from "recoil";
 import { toast } from "sonner";
-import { Editorr } from "../components";
+import { Editorr, TagsInput } from "../components";
 import { useUpload } from "../hooks";
-import { tokenAtom } from "../store/atoms";
+import { allBlogs, tokenAtom } from "../store/atoms";
 const BlogWrite = () => {
+	const navigate = useNavigate();
 	const BASE_URL = import.meta.env.VITE_URL;
 	const [content, setContent] = useState("");
 	const [published, setPublished] = useState(false);
@@ -15,7 +18,9 @@ const BlogWrite = () => {
 	const [imageLink, setImageLink] = useState<string | null>("");
 	const { loading, uploadImage, url } = useUpload();
 	const [loadingBlog, setloadingBlog] = useState(false);
+	const fetchBlogs = useRecoilRefresher_UNSTABLE(allBlogs);
 	const token = useRecoilValue(tokenAtom);
+	const [tags, setTags] = useState<string[]>([]);
 	useEffect(() => {
 		if (!loading) {
 			setImageLink(url);
@@ -35,6 +40,9 @@ const BlogWrite = () => {
 					published: published,
 					content: content,
 					image: imageLink,
+					labels: tags.map((label: string) => {
+						return label;
+					}),
 				},
 				{
 					headers: {
@@ -43,9 +51,11 @@ const BlogWrite = () => {
 				},
 			);
 			toast.success(data.message);
+			fetchBlogs();
 			setTitle("");
 			setPublished(false);
 			setContent("");
+			navigate("/blogs");
 			setImageLink("");
 			setImageFile(null);
 			setloadingBlog(false);
@@ -64,7 +74,7 @@ const BlogWrite = () => {
 	return (
 		<div className="py-2 w-full bg-white dark:bg-gray-900 flex items-center justify-center flex-col gap-4 px-2 md:px-0">
 			<div className="md:mt-10  flex-col items-center justify-center">
-				<div className="flex items-center gap-5 ">
+				<div className="flex items-center justify-between gap-5 px-1">
 					<input
 						type="text"
 						className=" p-2.5 w-3/4 z-20 text-sm text-gray-900 bg-gray-50 rounded-lg  border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500 px-2"
@@ -73,7 +83,6 @@ const BlogWrite = () => {
 						onChange={(e) => setTitle(e.target.value)}
 						required
 					/>
-
 					<div className="flex items-center">
 						<input
 							id="checked-checkbox"
@@ -107,18 +116,22 @@ const BlogWrite = () => {
 						disabled={loading}
 						isProcessing={loading}
 					>
+						<Image className="inline pr-2 h-fit py-auto" />
 						Upload
 					</Button>
 				</div>
+				<div className="py-1 w-auto px-1">
+					<TagsInput tags={tags} setTags={setTags} />
+				</div>
 				<Editorr content={content} setContent={setContent} />{" "}
-				<div className="flex items-center justify-center">
+				<div className="flex my-2 items-center justify-center">
 					<Button
 						onClick={SubmitHandler}
 						color="blue"
 						disabled={loadingBlog}
 						isProcessing={loadingBlog}
 					>
-						Add blog
+						Publish Blog
 					</Button>
 				</div>
 			</div>

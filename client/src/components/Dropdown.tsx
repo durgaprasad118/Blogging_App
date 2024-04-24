@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useRecoilValueLoadable, useSetRecoilState } from "recoil";
-import { tokenAtom, userdetailsAtom } from "../../store/atoms";
+import { tokenAtom, userIdAtom, userdetailsAtom } from "../store/atoms";
 const Dropdown = () => {
 	const navigate = useNavigate();
 	let userName = "";
 	const { state, contents } = useRecoilValueLoadable(userdetailsAtom);
+	const setUserId = useSetRecoilState(userIdAtom);
 	if (state == "hasValue") {
+		setUserId(contents?.id);
 		userName = contents?.name;
 	}
 	const [isOpen, setIsOpen] = useState(false);
@@ -38,6 +40,15 @@ const Dropdown = () => {
 							<a className="block px-4 py-2  dark:hover:bg-gray-600 dark:hover:text-white  bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
 								{userName}
 							</a>
+						</li>
+						<li>
+							<Link
+								to={"/myblogs"}
+								className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+								onClick={closeDropdown}
+							>
+								My blogs
+							</Link>
 						</li>
 						<li>
 							<Link
