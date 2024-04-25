@@ -12,7 +12,6 @@ const BlogPage = () => {
 	const { id } = useParams();
 	const navigate = useNavigate();
 	const { state, contents } = useRecoilValueLoadable(particularBlog(id!));
-
 	if (state === "loading") {
 		return <BlogPageSkeleton />;
 	}
@@ -29,7 +28,6 @@ const BlogPage = () => {
 
 				<div className="text-sm  text-gray-500 dark:text-gray-400">
 					<PencilLine className="inline pr-2" />
-					{2 - 98 - 32}
 				</div>
 				<span className="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">
 					{7} minutes read
@@ -50,7 +48,7 @@ const BlogPage = () => {
 						{contents.title}
 					</span>
 				</h1>
-				<p className="my-4 text-gray-500 dark:text-gray-400 md:text-lg md:px-12 px-8">
+				<p className="my-4 w-full overflow-x-auto whitespace-pre-wrap text-gray-500 dark:text-gray-400 md:text-lg md:px-12 px-4">
 					{parse(contents.content)}
 				</p>
 			</div>

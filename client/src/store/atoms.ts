@@ -63,17 +63,10 @@ const particularBlog = atomFamily({
 	key: "particularBlog",
 	default: selectorFamily({
 		key: `particularBlog_$`,
-		get:
-			(id: string) =>
-			async ({ get }) => {
-				const Usertoken = get(tokenAtom);
-				const { data } = await axios.get(`${BASE_URL}/blog/${id}`, {
-					headers: {
-						Authorization: "Bearer " + Usertoken,
-					},
-				});
-				return data?.data?.blogs;
-			},
+		get: (id: string) => async () => {
+			const { data } = await axios.get(`${BASE_URL}/blog/${id}`, {});
+			return data?.data?.blogs;
+		},
 	}),
 });
 

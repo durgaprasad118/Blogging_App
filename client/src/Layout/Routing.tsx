@@ -31,14 +31,7 @@ const Routing = () => {
 							</ProtectedRoute>
 						}
 					/>
-					<Route
-						path="/blog/:id"
-						element={
-							<ProtectedRoute>
-								<BlogPage />
-							</ProtectedRoute>
-						}
-					/>
+					<Route path="/blog/:id" element={<BlogPage />} />
 					<Route
 						path="/blog/edit/:id"
 						element={

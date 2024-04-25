@@ -5,7 +5,7 @@ export interface EditorI {
 	setContent: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const apiKey = "mu2fiadzwozcmwmerrtl4ew3rre5qk2kw1mya51xoldre8ju";
+const apiKey = import.meta.env.VITE_KEY;
 
 function Editorr({ content, setContent }: EditorI) {
 	const onEditorInputChange = (newValue: string) => {

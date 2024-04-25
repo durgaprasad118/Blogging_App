@@ -69,6 +69,7 @@ const Dropdown = () => {
 									closeDropdown();
 									setValue(null);
 									localStorage.removeItem("token");
+									window.location.href = "/";
 									navigate("/");
 								}}
 							>
