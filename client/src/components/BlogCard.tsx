@@ -94,6 +94,7 @@ const BlogCard = ({
 			<img
 				className="object-cover md:object-fill w-full rounded-t-lg  md:w-80  h-48 md:rounded-lg "
 				src={image}
+				loading="lazy"
 			/>
 		</div>
 	);

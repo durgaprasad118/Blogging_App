@@ -60,6 +60,7 @@ const Header = () => {
 						<div className="flex flex-shrink-0 items-center">
 							<Link to={"/"}>
 								<img
+									loading="lazy"
 									className="h-12 w-12 dark:bg-gray-200 dark:rounded-full md:block hidden"
 									src={logo}
 									alt="Your Company"
@@ -155,6 +156,7 @@ const Header = () => {
 				<div className="space-y-1 px-2 pb-3 pt-2 bg-gray-50 dark:text-gray-200 text-gray-600   dark:bg-gray-800 ">
 					<div className="flex items-center justify-center gap-x-1">
 						<img
+							loading="lazy"
 							className="h-12 w-12 dark:bg-gray-200 dark:rounded-full md:block hidden"
 							src={logo}
 							alt="Your Company"

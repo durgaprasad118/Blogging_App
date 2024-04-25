@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useRecoilValueLoadable, useSetRecoilState } from "recoil";
 import { tokenAtom, userIdAtom, userdetailsAtom } from "../store/atoms";
+import Profile from "../assets/Profile.png";
 const Dropdown = () => {
 	const navigate = useNavigate();
 	let userName = "";
@@ -24,7 +25,8 @@ const Dropdown = () => {
 	return (
 		<div className="relative inline-block text-left">
 			<img
-				src={"https://flowbite.com/docs/images/logo.svg"}
+				loading="lazy"
+				src={Profile}
 				alt="Dropdown button"
 				onClick={toggleDropdown}
 				className={`cursor-pointer h-14 w-14`}

@@ -7,6 +7,7 @@ const Footer = () => {
 					<div className="mb-6 md:mb-0">
 						<a href="#" className="flex items-center">
 							<img
+								loading="lazy"
 								src={logo}
 								className="h-12 w-12 mr-2 dark:bg-gray-200 dark:rounded-full md:block hidden"
 								alt="InkWell Logo"

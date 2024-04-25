@@ -37,8 +37,8 @@ const Home = () => {
 						</svg>
 					</a>
 					<h1 className="mb-4 text-4xl font-extrabold tracking-tight leading-none text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
-						Don't just scroll, create. Start your{" "}
-						<span className="text-blue-600">blog today. </span>
+						Your stories deserve a stage. It's time to{" "}
+						<span className="text-blue-600">blog </span>
 					</h1>
 					<p className="mb-8 text-lg font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48 dark:text-gray-200">
 						Write freely, publish easily. Your voice, amplified.

@@ -21,6 +21,7 @@ const BlogPage = () => {
 			<img
 				className="object-cover md:object-fill w-auto rounded-lg  md:h-96 mt-4 "
 				src={contents?.image}
+				loading="lazy"
 			/>
 
 			<div className="flex items-center gap-3">

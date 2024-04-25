@@ -1,6 +1,6 @@
 import { RecoilRoot } from "recoil";
 import { Toaster } from "sonner";
-import Routing from "./Layouts/Routing";
+import Routing from "./Layout/Routing";
 import { useEffect } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css";

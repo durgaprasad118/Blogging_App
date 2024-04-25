@@ -1,39 +1,26 @@
 const data = [
 	{
-		title: "Can I get a refund if I'm not satisfied with a course?",
+		title: "What makes this platform better than other ones ?",
 		description:
-			"Refund policies can vary depending on the course and the instructor. You can find detailed information on our refund policy in the course description.",
-		id: 0,
-	},
-	{
-		title: "How can I search for courses on DevSikShaHub?",
-		description:
-			"You can search for courses using the search bar on the homepage. You can also browse through categories and filter results based on your preferences. ",
-		id: 1,
-	},
-	{
-		title: "What if I encounter technical issues while accessing a course?    ",
-		description:
-			"If you face technical problems, please contact our support team. We'll assist you in resolving any issues as quickly as possible.      ",
-		id: 2,
-	},
-	{
-		title: "I'm an instructor. How can I add my courses to DevSikShaHub?",
-		description:
-			'As an instructor, you can register as an admin, log in to your account, and then access the "Add Course" option to upload your courses, including details and content.',
+			"Great responsive UI, loading states and clear instructions , seamless signup and signin features which gives a great user exprience",
 		id: 3,
 	},
 	{
-		title: "What are the free courses on DevSikShaHub, and how can I access them?    ",
+		title: "On which edior do I create the blog and can I edit the blog?",
 		description:
-			'We offer a selection of free courses that you can access without any charge. Simply browse our "Free Courses" section to explore and enroll in them.',
-		id: 4,
+			"WYSIWYG editor is used, so you can seamlessly focus on writing and not on formatting. Yes you can edit the blog.",
+		id: 0,
 	},
 	{
-		title: "What are tech-related roadmaps, and how do they work?    ",
+		title: "Are all the blogs available to read?",
+		description: "Yes, all the blogs are availble for free.",
+		id: 1,
+	},
+	{
+		title: "Is there any limit for the number of blogs?",
 		description:
-			"Tech roadmaps are curated learning paths to help you master a specific technology or skill. You can follow these step-by-step guides to achieve your learning goals.",
-		id: 5,
+			"No, there isn't any limit and you can create any number of blogs and can add great thumbnails too.",
+		id: 2,
 	},
 ];
 export { data };
