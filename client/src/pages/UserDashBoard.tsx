@@ -51,8 +51,8 @@ const UserDashBoard = () => {
 				</div>
 				<div className="flex items-center justify-center text-center">
 					{data?.blogs.length === 0 && (
-						<p className="my-3 text-lg text-gray-500 md:text-xl dark:text-gray-400">
-							You haven't written any blogs
+						<p className="my-3 h-[50vh] text-lg text-gray-500 md:text-xl dark:text-gray-400">
+							You haven't written any blogs{" "}
 							<a
 								onClick={() => {
 									navigate("/write");
