@@ -20,7 +20,7 @@ blogRouter.post("/create", authMiddleware, createBlog);
 blogRouter.get("/usrBlogs", authMiddleware, getUserBlogs);
 blogRouter.get("/bulk", getAllUserBlogs);
 blogRouter.put("/update/:id", authMiddleware, updateBlog);
-blogRouter.get("/:id", authMiddleware, particularBlog);
+blogRouter.get("/:id", particularBlog);
 blogRouter.delete("/delete/:id", authMiddleware, deleteBlog);
 
 export { blogRouter };
