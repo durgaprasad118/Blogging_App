@@ -1,4 +1,4 @@
-import { Avatar, Badge } from "flowbite-react";
+import { Badge } from "flowbite-react";
 import parse from "html-react-parser";
 import { PencilLine } from "lucide-react";
 import { useNavigate, useParams } from "react-router-dom";
@@ -24,8 +24,7 @@ const BlogPage = () => {
 			/>
 
 			<div className="flex items-center gap-3">
-				<Avatar placeholderInitials={"dp"} rounded />
-
+				<h2>{contents.author.name}</h2>
 				<div className="text-sm  text-gray-500 dark:text-gray-400">
 					<PencilLine className="inline pr-2" />
 				</div>

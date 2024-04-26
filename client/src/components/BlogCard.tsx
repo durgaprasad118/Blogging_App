@@ -7,8 +7,6 @@ import {
 	getRandomColorFromSet,
 	readingTime,
 } from "../utils/formatDate";
-import { useRecoilValueLoadable } from "recoil";
-import { userdetailsAtom } from "../store/atoms";
 interface CardI {
 	title: string;
 	image: string;
@@ -27,10 +25,6 @@ const BlogCard = ({
 	labels,
 	author,
 }: CardI) => {
-	const { state, contents } = useRecoilValueLoadable(userdetailsAtom);
-	if (state == "hasValue") {
-		author = contents?.name;
-	}
 	const names = author?.split(" ");
 	const Author = names
 		? names[0].charAt(0) + names[names.length - 1].charAt(0)
