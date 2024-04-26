@@ -33,7 +33,7 @@ const BlogPage = () => {
 					{7} minutes read
 				</span>
 			</div>
-			<div className="flex items-center w-1/2 justify-center gap-2">
+			<div className="flex items-center flex-wrap justify-center gap-2">
 				{contents.labels.map((x: string) => {
 					return (
 						<Badge key={x} color={getRandomColorFromSet(colors)}>
