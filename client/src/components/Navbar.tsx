@@ -171,22 +171,34 @@ const Header = () => {
 					<NavLink
 						to={"/"}
 						onClick={() => toggleMobileMenu()}
-						className="bg-gray-900  block rounded-md px-3 py-2 text-base font-medium"
 						aria-current="page"
+						className={({ isActive }) =>
+							`hover-bg-gray-700 hover-text-white block rounded-md px-3 py-2 text-base font-medium ${
+								isActive && `bg-gray-700  text-white`
+							}`
+						}
 					>
 						Home
 					</NavLink>
 					<NavLink
 						onClick={() => toggleMobileMenu()}
 						to={"/blogs"}
-						className="hover-bg-gray-700 hover-text-white block rounded-md px-3 py-2 text-base font-medium"
+						className={({ isActive }) =>
+							`hover-bg-gray-700 hover-text-white block rounded-md px-3 py-2 text-base font-medium ${
+								isActive && `bg-gray-700  text-white`
+							}`
+						}
 					>
 						Blogs
 					</NavLink>
 					<NavLink
 						to={"/about"}
 						onClick={() => toggleMobileMenu()}
-						className=" hover-bg-gray-700 hover-text-white block rounded-md px-3 py-2 text-base font-medium"
+						className={({ isActive }) =>
+							`hover-bg-gray-700 hover-text-white block rounded-md px-3 py-2 text-base font-medium ${
+								isActive && `bg-gray-700  text-white`
+							}`
+						}
 					>
 						About
 					</NavLink>

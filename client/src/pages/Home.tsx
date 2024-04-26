@@ -17,7 +17,7 @@ const Home = () => {
 						<span className="text-xs bg-blue-600 rounded-full text-white px-4 py-1.5 me-3">
 							New{" "}
 						</span>
-						<span className="text-sm font-medium">
+						<span className="md:text-sm text-xs  ">
 							Discover more of what matters to you
 						</span>
 						<svg
