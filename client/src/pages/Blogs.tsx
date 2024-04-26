@@ -57,18 +57,20 @@ const Blogs = () => {
 				</div>
 				<div className="flex items-center justify-center flex-col">
 					{data?.blogs.map((blog: BlogI) => {
-						return (
-							<BlogCard
-								key={blog.id}
-								title={blog.title}
-								content={blog.content}
-								id={blog.id}
-								createdAt={blog.createdAt}
-								image={blog.image}
-								author={blog.author.name}
-								labels={blog.labels}
-							/>
-						);
+						if (blog.published) {
+							return (
+								<BlogCard
+									key={blog.id}
+									title={blog.title}
+									content={blog.content}
+									id={blog.id}
+									createdAt={blog.createdAt}
+									image={blog.image}
+									author={blog.author.name}
+									labels={blog.labels}
+								/>
+							);
+						}
 					})}
 				</div>
 			</div>

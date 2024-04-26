@@ -28,7 +28,7 @@ const Panel = forwardRef<PanelRef, PanelProps>(
 
 		return (
 			<div
-				className="flex-col cursor-pointer gap-y-10 md:w-3/4 flex justify-center"
+				className="flex-col cursor-pointer gap-y-10 w-full md:w-3/4 flex justify-center"
 				data-aos="fade-right"
 			>
 				<div className="dark:bg-gray-800 dark:border-gray-700 bg-white border border-gray-200 duration-500 ease-in-out rounded-lg text-gray-900 dark:text-white">

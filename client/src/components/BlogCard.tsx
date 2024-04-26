@@ -66,7 +66,7 @@ const BlogCard = ({
 					{ParsedContent}
 				</p>
 
-				<div className="flex items-center w-1/2 py-2  md:py-3 gap-2">
+				<div className="flex items-center flex-wrap py-2  md:py-3 gap-2">
 					{labels.map((x: string) => {
 						return (
 							<Badge

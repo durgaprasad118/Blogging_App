@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useRecoilValueLoadable } from "recoil";
-import { BlogCard, SearchInput } from "../components";
+import { BlogCard } from "../components";
 import { BlogCardSkeleton } from "../components/skeletons";
 import { userBlogs } from "../store/atoms";
 
@@ -25,11 +25,15 @@ const UserDashBoard = () => {
 		return (
 			<section className="bg-white dark:bg-gray-900 bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')] dark:bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern-dark.svg')]">
 				<div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 z-10 relative gap-4 h-full">
-					<div className="mb-4">
-						<SearchInput />
-					</div>
-
 					<div className="flex items-center justify-center flex-col">
+						<div className="mb-4">
+							<h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+								Your {"   "}
+								<span className="text-blue-600 dark:text-blue-500">
+									Blogs
+								</span>{" "}
+							</h1>
+						</div>
 						{arr.map((x) => {
 							return <BlogCardSkeleton key={x} />;
 						})}

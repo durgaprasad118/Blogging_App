@@ -1,10 +1,9 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useRecoilValueLoadable, useSetRecoilState } from "recoil";
 import { tokenAtom, userIdAtom, userdetailsAtom } from "../store/atoms";
 import Profile from "../assets/Profile.png";
 const Dropdown = () => {
-	const navigate = useNavigate();
 	let userName = "";
 	const { state, contents } = useRecoilValueLoadable(userdetailsAtom);
 	const setUserId = useSetRecoilState(userIdAtom);
@@ -70,7 +69,6 @@ const Dropdown = () => {
 									setValue(null);
 									localStorage.removeItem("token");
 									window.location.href = "/";
-									navigate("/");
 								}}
 							>
 								Sign out
