@@ -20,9 +20,21 @@ function Editorr({ content, setContent }: EditorI) {
 					direction: "ltr",
 					icons: "jam",
 					plugins:
-						"anchor autolink charmap codesample emoticons  link lists media searchreplace table visualblocks wordcount checklist mediaembed code codesample casechange export formatpainter  linkchecker         tableofcontents footnotes mergetags autocorrect typography inlinecss markdown",
+						"anchor autolink charmap codesample emoticons fullscreen link lists media searchreplace table visualblocks wordcount code checklist mediaembed code codesample casechange export formatpainter  linkchecker         tableofcontents footnotes mergetags autocorrect typography inlinecss markdown",
 					toolbar:
-						"undo redo | blocks fontfamily  | bold italic underline strikethrough | link   table  | addcomment showcomments codesample    | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat",
+						"undo redo | blocks fontfamily  | bold italic underline strikethrough | link   table  | addcomment showcomments codesample code | fullscreen    | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat",
+					codesample_languages: [
+						{ text: "HTML/XML", value: "markup" },
+						{ text: "JavaScript", value: "javascript" },
+						{ text: "CSS", value: "css" },
+						{ text: "PHP", value: "php" },
+						{ text: "Ruby", value: "ruby" },
+						{ text: "Python", value: "python" },
+						{ text: "Java", value: "java" },
+						{ text: "C", value: "c" },
+						{ text: "C#", value: "csharp" },
+						{ text: "C++", value: "cpp" },
+					],
 					tinycomments_mode: "embedded",
 					tinycomments_author: "Author name",
 					mergetags_list: [
