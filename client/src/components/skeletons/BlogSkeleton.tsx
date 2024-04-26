@@ -1,4 +1,3 @@
-import { Avatar } from "flowbite-react";
 import { PencilLine } from "lucide-react";
 
 const BlogPageSkeleton = () => {
@@ -16,8 +15,7 @@ const BlogPageSkeleton = () => {
 				</svg>
 			</div>
 			<div className="flex items-center gap-3">
-				<Avatar placeholderInitials="" rounded />
-
+				<div className="rounded-md bg-Rray-200 dark:bg-gray-700 w-20 h-6 mb-2 animate-pulse"></div>
 				<div className="text-sm w-20 h-4 b text-gray-500 dark:text-gray-400 animate-pulse">
 					<PencilLine className="inline pr-2" />
 				</div>
