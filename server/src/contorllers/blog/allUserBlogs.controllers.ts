@@ -27,7 +27,7 @@ const getAllUserBlogs = async (c) => {
         author: true,
       },
       orderBy: {
-        createdAt: "asc",
+        createdAt: "desc",
       },
     });
     return c.json({
