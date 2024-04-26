@@ -47,7 +47,7 @@ const BlogPage = () => {
 						{contents.title}
 					</span>
 				</h1>
-				<p className="my-4 w-full overflow-x-auto whitespace-pre-wrap text-gray-500 dark:text-gray-400 md:text-lg md:px-12 px-4">
+				<p className="my-4  w-full overflow-x-auto whitespace-pre-wrap text-gray-500 dark:text-gray-400 md:text-lg md:px-12 px-6">
 					{parse(contents.content)}
 				</p>
 			</div>
@@ -71,6 +71,12 @@ const BlogPage = () => {
 					<DeleteModal id={id!} />
 				</div>
 			)}
+			<hr className="w-48 h-1 mx-auto my-2 bg-gray-100 border-0 rounded dark:bg-gray-700" />
+			<div className="text-center">
+				<h1 className="mb-4 text-2xl font-extrabold leading-none tracking-tight text-gray-700 md:text-4xl  dark:text-gray-200">
+					Thanks you for reading the blog.
+				</h1>
+			</div>
 			<hr className="w-48 h-1 mx-auto my-2 bg-gray-100 border-0 rounded dark:bg-gray-700" />
 		</div>
 	);
