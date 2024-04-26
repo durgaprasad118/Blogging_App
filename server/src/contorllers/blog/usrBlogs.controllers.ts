@@ -10,6 +10,9 @@ const getUserBlogs = async (c) => {
       where: {
         authorId: userId,
       },
+      orderBy: {
+        createdAt: "asc",
+      },
     });
     return c.json({
       success: true,

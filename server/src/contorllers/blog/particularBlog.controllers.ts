@@ -10,6 +10,9 @@ const particularBlog = async (c) => {
       where: {
         id: id,
       },
+      include: {
+        author: true,
+      },
     });
     return c.json({
       success: true,
