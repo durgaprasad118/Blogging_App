@@ -7,6 +7,7 @@ import { DeleteModal } from "../components";
 import { BlogPageSkeleton } from "../components/skeletons";
 import { particularBlog, userIdAtom } from "../store/atoms";
 import { colors, getRandomColorFromSet } from "../utils/formatDate";
+import styles from "./style.module.css";
 const BlogPage = () => {
 	const userId = useRecoilValue(userIdAtom);
 	const { id } = useParams();
@@ -41,6 +42,7 @@ const BlogPage = () => {
 					);
 				})}
 			</div>
+
 			<div className="flex flex-col ">
 				<h1 className="text-center mb-4 text-3xl  font-bold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
 					<span className="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">
@@ -48,9 +50,12 @@ const BlogPage = () => {
 					</span>
 				</h1>
 				<p className="my-4  w-full overflow-x-auto whitespace-pre-wrap text-gray-500 dark:text-gray-400 md:text-lg md:px-12 px-6">
-					{parse(contents.content)}
+					<div className={`${styles.myContainer} `}>
+						{parse(contents.content)}
+					</div>
 				</p>
 			</div>
+
 			{userId == contents.authorId && (
 				<div className="flex items-baseline gap-4">
 					<button

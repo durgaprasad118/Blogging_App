@@ -1,0 +1,63 @@
+.myContainer li {
+	list-style-type: disc;
+}
+
+.myContainer a {
+	color: hotpink;
+	text-decoration: underline;
+}
+
+.myContainer a:hover {
+	color: #e93087;
+}
+.myContainer code {
+	font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+	font-size: 0.9em;
+	padding: 0.2em 0.4em;
+	border-radius: 0.25rem;
+	color: #808080;
+}
+
+.myContainer pre {
+	font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+	font-size: 0.9em;
+	background-color: #f0f0f0;
+	color: #808080;
+	padding: 1em;
+	border-radius: 5px;
+	overflow-x: auto;
+	overflow-x: auto;
+}
+
+.myContainer h1 {
+	text-align: center;
+	margin-bottom: 1rem;
+	font-size: 2.25rem;
+	font-weight: 700;
+	line-height: 1.2;
+	letter-spacing: -0.025em;
+}
+
+.myContainer h2 {
+	text-align: center;
+	margin-bottom: 1rem;
+	font-size: 1.875rem;
+	font-weight: 700;
+	line-height: 1;
+	letter-spacing: -0.025em;
+}
+
+.myContainer h3 {
+	text-align: center;
+	margin-bottom: 1rem;
+	font-size: 1.5rem;
+	font-weight: 700;
+	line-height: 1.2;
+	letter-spacing: -0.025em;
+}
+
+.myContainer p {
+	margin-bottom: 1rem;
+	font-size: 1rem;
+	line-height: 1.5;
+}
