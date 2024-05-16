@@ -20,9 +20,9 @@ function Editorr({ content, setContent }: EditorI) {
 					direction: "ltr",
 					icons: "jam",
 					plugins:
-						"anchor autolink charmap codesample emoticons fullscreen link lists media searchreplace table visualblocks wordcount code checklist mediaembed code codesample casechange export formatpainter  linkchecker         tableofcontents footnotes mergetags autocorrect typography inlinecss markdown",
+						"anchor autolink charmap codesample emoticons fullscreen link lists media searchreplace table visualblocks wordcount code   code codesample     linkchecker         ",
 					toolbar:
-						"undo redo | blocks fontfamily  | bold italic underline strikethrough | link   table  | addcomment showcomments codesample code | fullscreen    | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat",
+						"undo redo | blocks fontfamily  | bold italic underline strikethrough | link   table  | addcomment showcomments codesample code | fullscreen    | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat",
 					codesample_languages: [
 						{ text: "HTML/XML", value: "markup" },
 						{ text: "JavaScript", value: "javascript" },

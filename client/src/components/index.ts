@@ -1,3 +1,4 @@
+export { SummarizeModal } from "./SummarizeModal";
 export { BlogCard } from "./BlogCard";
 export { DeleteModal } from "./DeleteModal";
 export { Dropdown } from "./Dropdown";

@@ -3,7 +3,7 @@ import parse from "html-react-parser";
 import { PencilLine } from "lucide-react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useRecoilValue, useRecoilValueLoadable } from "recoil";
-import { DeleteModal } from "../components";
+import { DeleteModal, SummarizeModal } from "../components";
 import { BlogPageSkeleton } from "../components/skeletons";
 import { particularBlog, userIdAtom } from "../store/atoms";
 import { colors, getRandomColorFromSet } from "../utils/formatDate";
@@ -23,6 +23,7 @@ const BlogPage = () => {
 				src={contents?.image}
 				loading="lazy"
 			/>
+			<SummarizeModal content={contents.content} />
 
 			<div className="flex items-center gap-3">
 				<h2>{contents.author.name}</h2>
@@ -32,6 +33,7 @@ const BlogPage = () => {
 				<span className="bg-green-100 text-green-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">
 					{7} minutes read
 				</span>
+				S
 			</div>
 			<div className="flex items-center flex-wrap justify-center gap-2">
 				{contents.labels.map((x: string) => {

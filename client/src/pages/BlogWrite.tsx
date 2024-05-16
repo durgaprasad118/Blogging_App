@@ -21,6 +21,49 @@ const BlogWrite = () => {
 	const fetchBlogs = useRecoilRefresher_UNSTABLE(allBlogs(""));
 	const token = useRecoilValue(tokenAtom);
 	const [tags, setTags] = useState<string[]>([]);
+	const [ailoading, setAiloading] = useState(false);
+	async function aiClick(): Promise<void> {
+		if (content === "") {
+			toast.error("Content is empty!");
+			return;
+		}
+		try {
+			const requestOptions: RequestInit = {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+					Authorization:
+						"Bearer " + String(import.meta.env.VITE_API_KEY),
+				},
+				body: JSON.stringify({
+					model: "gpt-3.5-turbo",
+					messages: [
+						{
+							role: "user",
+							content:
+								"Check for the grammatical mistakes if any from the text thats provided and return the data in the similar html format only and you can update the text and modify for better readability of the blog and give only the corrected hting don't provide anyother data only correct the data and return it: " +
+								content,
+						},
+					],
+				}),
+			};
+			setAiloading(true);
+			const response = await fetch(
+				import.meta.env.VITE_OPENAI,
+				requestOptions
+			);
+			const data = await response.json();
+			setContent("");
+			setContent(data.choices[0].message.content);
+			setAiloading(false);
+		} catch (error) {
+			if (error instanceof AxiosError) {
+				console.log(error);
+				toast.error(error.response?.data?.message);
+			}
+			setAiloading(false);
+		}
+	}
 	useEffect(() => {
 		if (!loading) {
 			setImageLink(url);
@@ -48,7 +91,7 @@ const BlogWrite = () => {
 					headers: {
 						Authorization: "Bearer " + token,
 					},
-				},
+				}
 			);
 			setloadingBlog(false);
 			navigate("/blogs");
@@ -126,6 +169,16 @@ const BlogWrite = () => {
 					<TagsInput tags={tags} setTags={setTags} />
 				</div>
 				<Editorr content={content} setContent={setContent} />{" "}
+				<div className="flex items-center justify-center">
+					<Button
+						onClick={aiClick}
+						disabled={ailoading}
+						isProcessing={ailoading}
+						color="purple"
+					>
+						Modify and update Content using ai
+					</Button>
+				</div>
 				<div className="flex my-2 items-center justify-center">
 					<Button
 						onClick={SubmitHandler}
