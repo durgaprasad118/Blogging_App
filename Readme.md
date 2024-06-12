@@ -2,6 +2,8 @@
 
 > Write freely, publish blogs easily.
 
+# Preview
+[video Preview](https://drive.google.com/file/d/1EMMF6A8iLHkdPPSjkmMtbemeU_-3q5Ow/view?usp=sharing)
 ## Live Link
 
 [InkWell](https://blogging-app-mauve.vercel.app/)
