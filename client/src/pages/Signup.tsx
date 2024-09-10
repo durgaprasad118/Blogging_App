@@ -1,6 +1,6 @@
 import axios, { AxiosError } from 'axios';
 import { Button, Label, TextInput } from 'flowbite-react';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 const Signup = () => {
@@ -40,9 +40,6 @@ const Signup = () => {
         }
     }
 
-    useEffect(() => {
-        toast.info('You can use: test@gmail.com');
-    }, []);
     return (
         <section className=" dark:bg-gray-900 bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern.svg')] dark:bg-[url('https://flowbite.s3.amazonaws.com/docs/jumbotron/hero-pattern-dark.svg')] bg-blend-multiply text-gray-800 dark:text-gray-50">
             <div className="p-2 md:p-0  md:h-screen  flex items-center justify-center h-screen py-8   lg:py-0">
