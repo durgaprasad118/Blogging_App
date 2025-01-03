@@ -19,10 +19,12 @@ function Editorr({ content, setContent }: EditorI) {
 					menubar: false,
 					direction: "ltr",
 					icons: "jam",
-					plugins:
-						"anchor autolink charmap codesample emoticons fullscreen link lists media searchreplace table visualblocks wordcount code   code codesample     linkchecker         ",
-					toolbar:
-						"undo redo | blocks fontfamily  | bold italic underline strikethrough | link   table  | addcomment showcomments codesample code | fullscreen    | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat",
+					plugins: 'link image media code autolink lists media table',
+					toolbar: 'undo redo | styleselect| forecolor  | bold italic | alignleft aligncenter alignright alignjustify | outdent indent | link image media| code table',
+					// plugins:
+					// 	"anchor autolink charmap codesample emoticons fullscreen link lists media searchreplace table visualblocks wordcount code   code codesample     linkchecker         ",
+					// toolbar:
+					// 	"undo redo | blocks fontfamily  | bold italic underline strikethrough | link   table  | addcomment showcomments codesample code | fullscreen    | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat",
 					codesample_languages: [
 						{ text: "HTML/XML", value: "markup" },
 						{ text: "JavaScript", value: "javascript" },
