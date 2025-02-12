@@ -16,7 +16,7 @@
 
 ##### Frontend
 
-    - React, typescript, tailwindcss, tinymce(editor), recoil( statemenagement), lucide-react (icons), html-react-parser (HTML string to one or more React element), aos( animated scrolling), sonner(toasts)
+    - React, typescript, tailwindcss, react-simple-wysiwyg (editor), recoil( statemenagement), lucide-react (icons), html-react-parser (HTML string to one or more React element), aos( animated scrolling), sonner(toasts)
 
 ## Features:
 
